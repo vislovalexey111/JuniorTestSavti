@@ -11,7 +11,7 @@ Tasks for MS SQL Server (T-SQL) were:
 3. Change table without direct access
     - Write SQL scripts, that will allow a User (or Group) change table values without GRANT direct access to the table itself.
 4. Crate c++ classes
-    - Create C++ classes Triangle, Circle and Square, that will contain geometry info: triangle - sides' length, circle - radius, square - lenght of one side. Also, create C++ class for a list, that able to add figures and to print all figures contained.
+    - Create C++ classes Triangle, Circle and Square, that will contain geometry info: triangle - sides' lengths, circle - radius, square - length of one side. Also, create C++ class for a list, that able to add figures and to print all figures' parameters.
 
 Answers for those tasks:
 1. DataBase1: CreateDataTbl.sql, PrintData.sql, PrintData2.sql
