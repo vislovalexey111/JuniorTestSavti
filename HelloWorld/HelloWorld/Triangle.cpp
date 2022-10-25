@@ -27,7 +27,7 @@ void Triangle::Print() const
 	std::cout << "Triangle with sides: a = ";
 	std::cout << m_sides[0] << ", b = ";
 	std::cout << m_sides[1] << ", c = ";
-	std::cout << m_sides[0] << std::endl;
+	std::cout << m_sides[2] << std::endl;
 }
 
 Triangle* Triangle::Clone() const

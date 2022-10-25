@@ -1,21 +1,20 @@
 ﻿-- Script execution for database created by default (change DB name if needed)
 use Database1
 
-declare @key int
+declare @key int,
+		@data varchar(20)
 
-declare db_cursor cursor for select KeyFld from DataTbl
+declare db_cursor cursor for select KeyFld, Datafld from DataTbl
 open db_cursor
-fetch next from db_cursor into @key
+fetch next from db_cursor into @key, @data
 
 if @@FETCH_STATUS = 0 begin
-	declare @data varchar(20) = (select DataFld from DataTbl where KeyFld = @key)
-	declare @str varchar(max) = (select concat(@key, ' - ', @data))
-	fetch next from db_cursor into @key
+	declare @str varchar(max) = concat(@key, ' - ', @data)
+	fetch next from db_cursor into @key, @data
 
 	while @@FETCH_STATUS = 0 begin
-		set @data = (select DataFld from DataTbl where KeyFld = @key)
 		set @str = (select concat(@str, ', ', @key, ' - ', @data))
-		fetch next from db_cursor into @key
+		fetch next from db_cursor into @key, @data
 	end
 
 	print @str

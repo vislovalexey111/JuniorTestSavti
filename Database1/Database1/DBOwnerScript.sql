@@ -1,7 +1,7 @@
 ﻿/*
 Without direct access to the table (select, update, insert, etc.) you can grant
-access to execute Stored Porcedures. This can be done to grant very limited
-functionality to Users to operate the table in the exactly allowed way by creating
+access to execute Stored Porcedures. This can be done to grant Users very limited
+functionality to operate the table in the exactly allowed way by creating
 procedures needed and assigning the "executor" role to User or Group. Those example
 scripts (DBOwnerScript and NoAccessUserScript) work with the table from the task 1 (DataTbl).
 */
