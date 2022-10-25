@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Circle.h"
 
-Circle::Circle(double radius) : Figure()
+Circle::Circle(double radius) : IFigure()
 {
 	if (radius > 0.0)
 		m_radius = radius;
@@ -12,11 +12,12 @@ Circle::Circle(double radius) : Figure()
 	}
 }
 
-Circle::~Circle()
-{
-}
-
-void Circle::Print()
+void Circle::Print() const
 {
 	std::cout << "Circle with radius: " << m_radius << std::endl;
+}
+
+Circle* Circle::Clone() const
+{
+	return new Circle(*this);
 }

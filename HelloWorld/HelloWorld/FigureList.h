@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include "Triangle.h"
 #include "Circle.h"
@@ -7,16 +8,27 @@
 class FigureList
 {
 private:
-	std::vector<Figure*> m_figures;
+	std::vector<IFigure*> m_figures;
 public:
-	FigureList();
+	// Constructor/Destructor
+	FigureList() {}
+	FigureList(const FigureList& otherList);
 	~FigureList();
 
-	void PrintFigures();
+	// Operators
+	FigureList operator=(const FigureList& otherList);
+	FigureList operator+(const FigureList& otherList);
+	void operator+=(const FigureList& otherList);
+	void operator+=(const IFigure* figure);
+
+	void PrintFigures() const;
+	void Add(const FigureList& otherList);
+	void Clear();
 
 	template <class T>
-	void AddFigure(T figure) {
-		Figure* f = new T(figure);
-		m_figures.push_back(f);
+	void AddFigure(const T figure)
+	{
+		const IFigure* f = &figure;
+		m_figures.push_back(f->Clone());
 	}
 };

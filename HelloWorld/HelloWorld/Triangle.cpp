@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Triangle.h"
 
-Triangle::Triangle(double side1, double side2, double side3) : Figure()
+Triangle::Triangle(double side1, double side2, double side3) : IFigure()
 {
 	//Check if all sides are correct and if triangle with those sides does exist
 	bool isTriangleGood = (side1 > 0.0 && side2 > 0.0 && side3 > 0.0)
@@ -22,14 +22,15 @@ Triangle::Triangle(double side1, double side2, double side3) : Figure()
 	}
 }
 
-Triangle::~Triangle()
-{
-}
-
-void Triangle::Print()
+void Triangle::Print() const
 {
 	std::cout << "Triangle with sides: a = ";
 	std::cout << m_sides[0] << ", b = ";
 	std::cout << m_sides[1] << ", c = ";
 	std::cout << m_sides[0] << std::endl;
+}
+
+Triangle* Triangle::Clone() const
+{
+	return new Triangle(*this);
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Square.h"
 
-Square::Square(double sideSize) : Figure()
+Square::Square(double sideSize) : IFigure()
 {
 	if (sideSize > 0.0)
 		m_sideSize = sideSize;
@@ -12,11 +12,12 @@ Square::Square(double sideSize) : Figure()
 	}
 }
 
-Square::~Square()
-{
-}
-
-void Square::Print()
+void Square::Print() const
 {
 	std::cout << "Square with side size: " << m_sideSize << std::endl;
+}
+
+Square* Square::Clone() const
+{
+	return new Square(*this);
 }
