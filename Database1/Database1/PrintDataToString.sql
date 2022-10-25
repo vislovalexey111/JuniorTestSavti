@@ -1,9 +1,10 @@
 ﻿-- Script execution for database created by default (change DB name if needed)
 use Database1
 
-declare @key int,
-		@data varchar(20),
-		@str varchar(max) = NULL
+declare
+	@key int,
+	@data varchar(20),
+	@str varchar(max) = NULL
 
 declare db_cursor cursor for select KeyFld, Datafld from DataTbl
 open db_cursor
