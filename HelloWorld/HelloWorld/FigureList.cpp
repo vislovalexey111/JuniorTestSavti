@@ -1,10 +1,8 @@
 #include <iostream>
 #include "FigureList.h"
 
-FigureList::FigureList(const FigureList& otherList)
-{
-	Add(otherList);
-}
+FigureList::FigureList(const FigureList& otherList) { Add(otherList); }
+FigureList::~FigureList() { Clear(); }
 
 FigureList FigureList::operator=(const FigureList& otherList)
 {
@@ -14,7 +12,7 @@ FigureList FigureList::operator=(const FigureList& otherList)
 	return *this;
 }
 
-FigureList FigureList::operator+(const FigureList& otherList)
+FigureList FigureList::operator+(const FigureList& otherList) const
 {
 	FigureList tempFigureList(*this);
 	tempFigureList.Add(otherList);
@@ -24,7 +22,7 @@ FigureList FigureList::operator+(const FigureList& otherList)
 
 void FigureList::operator+=(const FigureList& otherList)
 {
-	Add(otherList);
+	for (auto p : otherList.m_figures) *this += p;
 }
 
 void FigureList::operator+=(const IFigure* figure)
@@ -32,21 +30,14 @@ void FigureList::operator+=(const IFigure* figure)
 	m_figures.push_back(figure->Clone());
 }
 
-FigureList::~FigureList()
-{
-	Clear();
-}
-
 void FigureList::PrintFigures() const
 {
-	for (auto p : m_figures)
-		p->Print();
+	for (auto p : m_figures) p->Print();
 }
 
-inline void FigureList::Add(const FigureList& otherList)
+void FigureList::Add(const FigureList& otherList)
 {
-	for (auto p : otherList.m_figures)
-		*this += p;
+	*this += otherList;
 }
 
 inline void FigureList::Clear()

@@ -10,14 +10,13 @@ class FigureList
 private:
 	std::vector<IFigure*> m_figures;
 public:
-	// Constructor/Destructor
 	FigureList() {}
 	FigureList(const FigureList& otherList);
 	~FigureList();
 
 	// Operators
+	FigureList operator+(const FigureList& otherList) const;
 	FigureList operator=(const FigureList& otherList);
-	FigureList operator+(const FigureList& otherList);
 	void operator+=(const FigureList& otherList);
 	void operator+=(const IFigure* figure);
 
@@ -29,6 +28,6 @@ public:
 	void AddFigure(const T figure)
 	{
 		const IFigure* f = &figure;
-		m_figures.push_back(f->Clone());
+		*this += f;
 	}
 };
